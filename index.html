@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Levain Inspired Bakery</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat&display=swap');
+  body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: #fff8f0;
+    color: #4b3b2b;
+    line-height: 1.6;
+  }
+  header {
+    background: #3e2c23;
+    color: #f8e6d8;
+    padding: 4rem 1rem 3rem;
+    text-align: center;
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.05em;
+  }
+  header p {
+    font-size: 1.3rem;
+    font-style: italic;
+    color: #d8c3b0;
+    margin-top: 0;
+  }
+  nav {
+    background: #5a4437;
+    text-align: center;
+    padding: 0.7rem 0;
+  }
+  nav a {
+    color: #f8e6d8;
+    margin: 0 1.4rem;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.03em;
+    transition: color 0.3s ease;
+  }
+  nav a:hover {
+    color: #d9b382;
+  }
+  section {
+    max-width: 850px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+  }
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    margin-bottom: 1.2rem;
+    color: #3e2c23;
+    border-bottom: 3px solid #d9b382;
+    display: inline-block;
+    padding-bottom: 0.4rem;
+  }
+  .menu-item {
+    margin-bottom: 1.6rem;
+  }
+  .menu-item h3 {
+    margin: 0;
+    font-weight: 700;
+    color: #7a5c40;
+  }
+  .menu-item p {
+    margin: 0.4rem 0 0 0;
+    font-style: italic;
+  }
+  .contact {
+    text-align: center;
+  }
+  .whatsapp-button {
+    background: #25D366;
+    color: white;
+    border: none;
+    padding: 1.2rem 2.5rem;
+    font-size: 1.25rem;
+    border-radius: 50px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background 0.3s ease;
+    box-shadow: 0 6px 12px rgba(37, 211, 102, 0.4);
+  }
+  .whatsapp-button:hover {
+    background: #1ebe57;
+    box-shadow: 0 8px 16px rgba(30, 190, 87, 0.6);
+  }
+  .whatsapp-icon {
+    width: 28px;
+    height: 28px;
+  }
+  footer {
+    text-align: center;
+    padding: 1.5rem;
+    color: #8b7e74;
+    font-size: 0.9rem;
+    border-top: 1px solid #f0e6db;
+  }
+  @media (max-width: 600px) {
+    header h1 {
+      font-size: 2.6rem;
+    }
+    nav a {
+      margin: 0 0.9rem;
+      font-size: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Levain Inspired Bakery</h1>
+  <p>Handcrafted Cookies & Baked Delights Made with Passion</p>
+</header>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#menu">Menu</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section id="about">
+  <h2>About Us</h2>
+  <p>At Levain Inspired Bakery, we craft artisanal cookies and baked goods that bring warmth and joy to every bite. Our recipes are inspired by the classic New York bakery tradition, blending rich flavors and premium ingredients.</p>
+</section>
+
+<section id="menu">
+  <h2>Menu Highlights</h2>
+  <div class="menu-item">
+    <h3>Signature Chocolate Chip Walnut Cookie</h3>
+    <p>A thick, gooey cookie loaded with premium chocolate chips and toasted walnuts, baked fresh daily.</p>
+  </div>
+  <div class="menu-item">
+    <h3>Double Chocolate Chunk Cookie</h3>
+    <p>Decadent and fudgy, with chunks of dark and milk chocolate melting in every bite.</p>
+  </div>
+  <div class="menu-item">
+    <h3>Oatmeal Raisin Classic</h3>
+    <p>Soft, chewy, and wholesome — a nostalgic favorite with plump raisins and a hint of cinnamon.</p>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <h2>Contact & Order</h2>
+  <p>Ready to enjoy our freshly baked treats? Get in touch or place your order today!</p>
+  <a class="whatsapp-button" href="https://wa.me/1234567890?text=Hi%20Levain%20Inspired%20Bakery,%20I%20would%20like%20to%20place%20an%20order." target="_blank" rel="noopener noreferrer">
+    <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#FFF" d="M20.52 3.48A11.931 11.931 0 0 0 3.48 20.52l-1.7 4.9 5.03-1.66a11.931 11.931 0 0 0 13.7-13.7z"/>
+      <path fill="#25D366" d="M17.56 14.05c-.24-.12-1.44-.7-1.66-.78-.22-.08-.38-.12-.54.12s-.62.78-.76.94c-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.44-1.34-1.68-.14-.24-.02-.36.1-.48.1-.1.24-.26.36-.4.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.8-.2-.48-.4-.42-.54-.42-.14 0-.3-.02-.46-.02-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2 .02 1.18.86 2.32.98 2.48.12.16 1.7 2.6 4.12 3.64.58.24 1.04.38 1.4.48.58.16 1.1.14 1.52.08.46-.08 1.44-.58 1.64-1.14.2-.56.2-1.04.14-1.14-.08-.1-.22-.16-.46-.28z"/>
+    </svg>
+    Order via WhatsApp
+  </a>
+  <p style="margin-top: 1.2rem;">Or call us: <a href="tel:+1234567890" style="color:#7a5c40; text-decoration:none;">+1 (234) 567-890</a></p>
+</section>
+
+<footer>
+  &copy; 2025 Levain Inspired Bakery. All rights reserved.
+</footer>
+
+<script>
+  // Smooth scrolling for nav links
+  document.querySelectorAll('nav a').forEach(anchor => {
+    anchor.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(anchor.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+
+</body>
+</html>
