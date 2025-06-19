@@ -1,6 +1,7 @@
 import { Button } from "./ui/button";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useCartDispatch } from "../CartContext";
 
 interface CookieProduct {
   id: number;
@@ -12,6 +13,8 @@ interface CookieProduct {
 
 export function CookieProducts() {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const [showToast, setShowToast] = useState(false);
+  const dispatch = useCartDispatch();
   
   const cookies: CookieProduct[] = [
     {
@@ -80,8 +83,19 @@ export function CookieProducts() {
     show: { opacity: 1, y: 0 }
   };
 
+  const handleAddToCart = (cookie: CookieProduct) => {
+    dispatch({ type: 'ADD_TO_CART', item: { id: cookie.id, name: cookie.name, price: cookie.price, image: cookie.image } });
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 1500);
+  };
+
   return (
     <section className="py-8 px-4 bg-gray-50">
+      {showToast && (
+        <div className="fixed top-6 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-6 py-2 rounded shadow-lg z-50 animate-bounce">
+          Añadido al carrito
+        </div>
+      )}
       <div className="container mx-auto">
         <h2 className="text-2xl font-bold text-center mb-2 text-purple-800">Nuestras Galletas</h2>
         <p className="text-center text-gray-600 mb-6">Descubre la variedad de galletas artesanales que Amar Bakery tiene para ti. ¡Perfectas para cualquier ocasión!</p>
@@ -132,7 +146,7 @@ export function CookieProducts() {
                     animate={{ opacity: 1, y: 0 }}
                     className="mt-2"
                   >
-                    <Button size="sm" className="w-full bg-purple-800 hover:bg-purple-900 text-xs">
+                    <Button size="sm" className="w-full bg-purple-800 hover:bg-purple-900 text-xs" onClick={() => handleAddToCart(cookie)}>
                       Añadir
                     </Button>
                   </motion.div>

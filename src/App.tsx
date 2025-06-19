@@ -8,6 +8,7 @@ import { BiggestCookie } from "./components/BiggestCookie";
 import { ContactForm } from "./components/ContactForm";
 import { Footer } from "./components/Footer";
 import { useEffect } from "react";
+import { CartProvider } from "./CartContext";
 
 function App() {
   // Smooth scroll behavior for the entire app
@@ -20,19 +21,21 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navbar />
-      <main>
-        <Hero />
-        <CookieFeatures />
-        <CookieProducts />
-        <CookieDescription />
-        <FeaturedCookies />
-        <BiggestCookie />
-      </main>
-      <ContactForm />
-      <Footer />
-    </div>
+    <CartProvider>
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <main>
+          <Hero />
+          <CookieFeatures />
+          <CookieProducts />
+          <CookieDescription />
+          <FeaturedCookies />
+          <BiggestCookie />
+        </main>
+        <ContactForm />
+        <Footer />
+      </div>
+    </CartProvider>
   );
 }
 

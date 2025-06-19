@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { ShoppingCart, Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
+import { useCart } from "../CartContext";
+import { CartModal } from "./CartModal";
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
+  const cart = useCart();
 
   return (
     <header className="bg-white py-2 px-4 shadow-sm sticky top-0 z-50">
@@ -41,10 +45,10 @@ export function Navbar() {
         </div>
         
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" onClick={() => setCartOpen(true)}>
             <ShoppingCart className="h-5 w-5" />
           </Button>
-          <span className="text-xs">0</span>
+          <span className="text-xs">{cart.length}</span>
         </div>
       </div>
       
@@ -63,6 +67,7 @@ export function Navbar() {
           </nav>
         </div>
       )}
+      <CartModal open={cartOpen} onClose={() => setCartOpen(false)} />
     </header>
   );
 }
