@@ -9,6 +9,22 @@ import { ContactForm } from "./components/ContactForm";
 import { Footer } from "./components/Footer";
 import { useEffect } from "react";
 import { CartProvider } from "./CartContext";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { CartPage } from "./pages/CartPage";
+
+function HomePage() {
+  return (
+    <>
+      <Hero />
+      <CookieFeatures />
+      <CookieProducts />
+      <CookieDescription />
+      <FeaturedCookies />
+      <BiggestCookie />
+      <ContactForm />
+    </>
+  )
+}
 
 function App() {
   // Smooth scroll behavior for the entire app
@@ -22,19 +38,18 @@ function App() {
 
   return (
     <CartProvider>
-      <div className="min-h-screen flex flex-col">
-        <Navbar />
-        <main>
-          <Hero />
-          <CookieFeatures />
-          <CookieProducts />
-          <CookieDescription />
-          <FeaturedCookies />
-          <BiggestCookie />
-        </main>
-        <ContactForm />
-        <Footer />
-      </div>
+      <Router>
+        <div className="min-h-screen flex flex-col">
+          <Navbar />
+          <main className="flex-grow">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/cart" element={<CartPage />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
     </CartProvider>
   );
 }

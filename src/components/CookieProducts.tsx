@@ -83,8 +83,8 @@ export function CookieProducts() {
     show: { opacity: 1, y: 0 }
   };
 
-  const handleAddToCart = (cookie: CookieProduct) => {
-    dispatch({ type: 'ADD_TO_CART', item: { id: cookie.id, name: cookie.name, price: cookie.price, image: cookie.image } });
+  const handleAddToCart = (cookie: Omit<CookieProduct, 'isVegan'>) => {
+    dispatch({ type: 'ADD_ITEM', item: { id: cookie.id, name: cookie.name, price: cookie.price, image: cookie.image } });
     setShowToast(true);
     setTimeout(() => setShowToast(false), 1500);
   };

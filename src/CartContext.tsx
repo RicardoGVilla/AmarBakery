@@ -6,20 +6,43 @@ export interface CartItem {
   name: string;
   price: string;
   image: string;
+  quantity: number;
 }
 
 type CartState = CartItem[];
 
 type CartAction =
-  | { type: 'ADD_TO_CART'; item: CartItem }
-  | { type: 'REMOVE_FROM_CART'; id: number }
+  | { type: 'ADD_ITEM'; item: Omit<CartItem, 'quantity'> }
+  | { type: 'DECREMENT_ITEM'; id: number }
+  | { type: 'REMOVE_ITEM'; id: number }
   | { type: 'CLEAR_CART' };
 
 function cartReducer(state: CartState, action: CartAction): CartState {
   switch (action.type) {
-    case 'ADD_TO_CART':
-      return [...state, action.item];
-    case 'REMOVE_FROM_CART':
+    case 'ADD_ITEM': {
+      const existingItemIndex = state.findIndex(item => item.id === action.item.id);
+      if (existingItemIndex > -1) {
+        // Item exists, increase quantity
+        const newState = [...state];
+        newState[existingItemIndex].quantity += 1;
+        return newState;
+      } else {
+        // Item does not exist, add it with quantity 1
+        return [...state, { ...action.item, quantity: 1 }];
+      }
+    }
+    case 'DECREMENT_ITEM': {
+        const existingItem = state.find(item => item.id === action.id);
+        if (existingItem && existingItem.quantity === 1) {
+            // if quantity is 1, remove it from the cart
+            return state.filter(item => item.id !== action.id);
+        }
+        // otherwise, just decrement the quantity
+        return state.map(item =>
+            item.id === action.id ? { ...item, quantity: item.quantity - 1 } : item
+        );
+    }
+    case 'REMOVE_ITEM':
       return state.filter(item => item.id !== action.id);
     case 'CLEAR_CART':
       return [];
